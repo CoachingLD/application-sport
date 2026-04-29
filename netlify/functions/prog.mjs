@@ -56,4 +56,4 @@ function json(status, data) {
   });
 }
 
-export const config = { path: '/api/prog' };
+export const config = { path: '/prog' };
