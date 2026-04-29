@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programmation Hypertrophie — 4 jours</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#1E1F25;color:#E8E8EC;min-height:100vh;padding:2rem 1rem}
+  .container{max-width:980px;margin:0 auto}
+
+  .header{background:#2C2D34;border-radius:16px;padding:2rem 2rem 1.5rem;margin-bottom:1.25rem;border:1px solid #3A3B44}
+  .header-top{display:flex;align-items:center;gap:14px;margin-bottom:1.25rem}
+  .logo{width:46px;height:46px;background:#E8650A;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .logo svg{width:24px;height:24px;fill:white}
+  .header-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#E8650A;margin-bottom:2px}
+  .header-title{font-size:26px;font-weight:600;color:#fff}
+  .header-sub{font-size:14px;color:#8A8B96;margin-top:4px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;border-top:1px solid #3A3B44;padding-top:1.25rem}
+  .stat{background:#23242B;border-radius:10px;padding:12px;text-align:center}
+  .stat-num{font-size:20px;font-weight:600;color:#E8650A}
+  .stat-label{font-size:11px;color:#6A6B76;margin-top:3px}
+
+  .volume-card{background:#2C2D34;border-radius:16px;padding:1.5rem 2rem;margin-bottom:1.25rem;border:1px solid #3A3B44}
+  .vol-title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#E8650A;margin-bottom:1.25rem}
+  .vol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(max-width:540px){.vol-grid{grid-template-columns:1fr}}
+  .vol-row{display:flex;align-items:center;gap:10px}
+  .vol-muscle{font-size:13px;color:#C8C9D4;width:130px;flex-shrink:0}
+  .vol-bar-bg{flex:1;height:5px;background:#3A3B44;border-radius:3px;overflow:hidden}
+  .vol-bar-fg{height:100%;background:#E8650A;border-radius:3px}
+  .vol-num{font-size:13px;font-weight:600;color:#E8650A;width:36px;text-align:right;flex-shrink:0}
+  .vol-unit{font-size:11px;color:#5A5B66;width:28px;flex-shrink:0}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+
+  .day-card{background:#2C2D34;border-radius:14px;border:1px solid #3A3B44;overflow:hidden}
+  .day-header{background:#23242B;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #3A3B44}
+  .day-title{font-size:16px;font-weight:600;color:#fff}
+  .day-meta{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+  .day-pill{background:#E8650A;color:white;font-size:10px;font-weight:600;padding:2px 9px;border-radius:20px}
+  .day-count{font-size:10px;color:#6A6B76}
+  .day-body{padding:14px 18px}
+
+  .section{margin-bottom:12px}
+  .section:last-child{margin-bottom:0}
+  .section-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#E8650A;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #3A3B44}
+  .exercise-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #2A2B32}
+  .exercise-row:last-child{border-bottom:none}
+  .ex-left{display:flex;align-items:center;gap:8px}
+  .ex-dot{width:6px;height:6px;background:#E8650A;border-radius:50%;flex-shrink:0}
+  .ex-name{font-size:13px;color:#C8C9D4}
+  .ex-sets{background:#3A3B44;color:#E8650A;font-size:11px;font-weight:600;padding:2px 7px;border-radius:5px}
+
+  .footer{margin-top:1.25rem;background:#2C2D34;border-radius:12px;padding:1rem 1.5rem;border:1px solid #3A3B44;display:flex;align-items:center;gap:12px}
+  .footer-dot{width:8px;height:8px;background:#E8650A;border-radius:50%;flex-shrink:0}
+  .footer-text{font-size:13px;color:#6A6B76}
+  .footer-text strong{color:#C8C9D4;font-weight:500}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="logo"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29l-1.43-1.43z"/></svg></div>
+      <div>
+        <div class="header-label">Programmation</div>
+        <div class="header-title">Hypertrophie — 4 jours</div>
+        <div class="header-sub">Épaules · Pectoraux · Dos · Jambes · Mollets &nbsp;·&nbsp; Lun · Mar · Jeu · Ven</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Séances / sem.</div></div>
+      <div class="stat"><div class="stat-num" id="stat-ex">6</div><div class="stat-label">Exercices / séance</div></div>
+      <div class="stat"><div class="stat-num">~18</div><div class="stat-label">Séries / séance</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Jours de repos</div></div>
+    </div>
+  </div>
+
+  <div class="volume-card">
+    <div class="vol-title">Volume hebdomadaire — séries directes par groupe musculaire</div>
+    <div class="vol-grid" id="vol-grid">
+      <!-- Généré dynamiquement -->
+    </div>
+  </div>
+
+  <div class="grid" id="days-grid">
+    <!-- Généré dynamiquement -->
+  </div>
+
+  <div class="footer">
+    <div class="footer-dot"></div>
+    <div class="footer-text"><strong>Repos :</strong> Mercredi · Samedi · Dimanche &nbsp;·&nbsp; <strong>Objectif :</strong> Hypertrophie musculaire</div>
+  </div>
+
+</div>
+
+<script>
+const API_BASE = '/.netlify/functions/prog';
+
+const DEFAULT_DATA = {
+  days: [
+    {
+      id: 'lundi', title: 'Lundi', pill: 'Séance A',
+      sections: [
+        { name: 'Épaules', exercises: [
+          { name: 'Élévations latérales poulie basse', sets: 'x3' },
+          { name: 'Développé militaire machine ou haltères', sets: 'x3' }
+        ]},
+        { name: 'Dos', exercises: [{ name: 'Low row', sets: 'x3' }]},
+        { name: 'Pectoraux', exercises: [{ name: 'Développé couché guidé (debout)', sets: 'x3' }]},
+        { name: 'Jambes', exercises: [{ name: 'Leg extension', sets: 'x3' }]},
+        { name: 'Mollets', exercises: [{ name: 'Mollets donkey raise', sets: 'x3' }]}
+      ]
+    },
+    {
+      id: 'mardi', title: 'Mardi', pill: 'Séance B',
+      sections: [
+        { name: 'Épaules', exercises: [
+          { name: 'Élévations latérales haltères (debout)', sets: 'x3' },
+          { name: 'Élévations frontales haltères', sets: 'x3' }
+        ]},
+        { name: 'Pectoraux', exercises: [{ name: 'Développé convergent', sets: 'x3' }]},
+        { name: 'Jambes', exercises: [
+          { name: 'Pendulum squat', sets: 'x2' },
+          { name: 'Leg curl assis', sets: 'x3' }
+        ]},
+        { name: 'Mollets', exercises: [{ name: 'Mollets presse', sets: 'x3' }]}
+      ]
+    },
+    {
+      id: 'jeudi', title: 'Jeudi', pill: 'Séance C',
+      sections: [
+        { name: 'Épaules', exercises: [{ name: 'Élévations latérales poulie hanche', sets: 'x3' }]},
+        { name: 'Pectoraux', exercises: [{ name: 'Pec deck', sets: 'x3' }]},
+        { name: 'Dos', exercises: [{ name: 'Tirage vertical convergent', sets: 'x3' }]},
+        { name: 'Jambes', exercises: [
+          { name: 'RDL', sets: 'x2' },
+          { name: 'Leg extension', sets: 'x3' }
+        ]},
+        { name: 'Mollets', exercises: [{ name: 'Mollets assis', sets: 'x3' }]}
+      ]
+    },
+    {
+      id: 'vendredi', title: 'Vendredi', pill: 'Séance D',
+      sections: [
+        { name: 'Épaules', exercises: [
+          { name: 'Élévations latérales haltères sur banc incliné', sets: 'x3' },
+          { name: 'Élévations frontales haltères', sets: 'x3' }
+        ]},
+        { name: 'Dos', exercises: [
+          { name: 'Tirage horizontal', sets: 'x3' },
+          { name: 'T-Bar prise large', sets: 'x3' }
+        ]},
+        { name: 'Jambes', exercises: [
+          { name: 'Pendulum squat', sets: 'x2' },
+          { name: 'Leg curl assis', sets: 'x3' }
+        ]}
+      ]
+    }
+  ]
+};
+
+async function loadAndRender() {
+  let data;
+  try {
+    const r = await fetch(API_BASE + '?action=get');
+    data = r.ok ? await r.json() : null;
+  } catch { data = null; }
+
+  // Fallback: localStorage, puis données par défaut
+  if (!data) {
+    const stored = localStorage.getItem('prog_data');
+    data = stored ? JSON.parse(stored) : DEFAULT_DATA;
+  }
+
+  renderDays(data.days);
+  renderVolume(data.days);
+}
+
+function renderDays(days) {
+  const grid = document.getElementById('days-grid');
+  grid.innerHTML = '';
+  days.forEach(day => {
+    const totalEx = day.sections.reduce((s, sec) => s + sec.exercises.length, 0);
+    const totalSets = day.sections.reduce((s, sec) =>
+      s + sec.exercises.reduce((ss, ex) => ss + (parseInt(ex.sets?.replace('x','')) || 0), 0), 0);
+
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    card.innerHTML = `
+      <div class="day-header">
+        <div class="day-title">${day.title}</div>
+        <div class="day-meta">
+          <span class="day-pill">${day.pill}</span>
+          <span class="day-count">${totalEx} exercices · ${totalSets} séries</span>
+        </div>
+      </div>
+      <div class="day-body">
+        ${day.sections.map(sec => `
+          <div class="section">
+            <div class="section-title">${sec.name}</div>
+            ${sec.exercises.map(ex => `
+              <div class="exercise-row">
+                <div class="ex-left"><div class="ex-dot"></div><span class="ex-name">${ex.name}</span></div>
+                <span class="ex-sets">${ex.sets}</span>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderVolume(days) {
+  // Calcul du volume par groupe musculaire
+  const vol = {};
+  days.forEach(day => {
+    day.sections.forEach(sec => {
+      const sets = sec.exercises.reduce((s, ex) => s + (parseInt(ex.sets?.replace('x','')) || 0), 0);
+      vol[sec.name] = (vol[sec.name] || 0) + sets;
+    });
+  });
+
+  const sorted = Object.entries(vol).sort((a, b) => b[1] - a[1]);
+  const max = sorted[0]?.[1] || 1;
+  const grid = document.getElementById('vol-grid');
+  grid.innerHTML = sorted.map(([muscle, count]) => `
+    <div class="vol-row">
+      <span class="vol-muscle">${muscle}</span>
+      <div class="vol-bar-bg"><div class="vol-bar-fg" style="width:${Math.round(count/max*100)}%"></div></div>
+      <span class="vol-num">${count}</span>
+      <span class="vol-unit">séries</span>
+    </div>
+  `).join('');
+}
+
+loadAndRender();
+</script>
+</body>
+</html>
